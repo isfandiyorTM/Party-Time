@@ -45,6 +45,7 @@ button:active {
 header {
     width: 100%;
     min-height: 100vh;
+    overflow: hidden;
     background: url(../image/background-header.jpg) no-repeat bottom / cover fixed;
 }
 
@@ -60,12 +61,22 @@ header nav {
     justify-content: space-between;
     backdrop-filter: blur(2px);
     transition: 0.4s;
+    animation: light 0.8s;
+}
+
+@keyframes light {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 header nav.active {
     z-index: 20;
     backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 1);
     box-shadow: 0px 0px 10px black;
 }
 
@@ -74,7 +85,12 @@ header nav .logo {
     align-items: center;
     font-size: 22px;
     color: white;
-    text-shadow: 0px 2px 5px black;
+    text-shadow: 0px 0px 2px black;
+}
+
+header nav .logo.active {
+    color: black;
+    text-shadow: none;
 }
 
 header nav .logo img {
@@ -88,13 +104,17 @@ header nav .navigation a {
     font-size: 20px;
     color: white;
     transition: 0.4s;
-    text-shadow: 0px 1px 5px black;
+    text-shadow: 0px 0px 2px black;
+}
+
+header nav .navigation a.active {
+    color: black;
+    text-shadow: none;
 }
 
 header nav .navigation a:hover {
-    color: var(--yellow);
-    transform: scale(1.01);
-    text-shadow: 0px 4px 5px black;
+    color: var(--blue);
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
 
 header nav .navigation a:active {
@@ -124,6 +144,7 @@ header section .text-div h1:first-child {
     color: white;
     font-size: 72px;
     text-shadow: 0px 2px 5px black;
+    animation: left-to-right 0.5s;
 }
 
 header section .text-div h1:nth-child(2) {
@@ -134,6 +155,7 @@ header section .text-div h1:nth-child(2) {
     font-family: sans-serif;
     text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
     -webkit-text-stroke: 2px white;
+    animation: left-to-right 0.7s;
 }
 
 header section .text-div a {
@@ -147,6 +169,7 @@ header section .text-div a {
     border-radius: 60px;
     color: white;
     font-size: 20px;
+    animation: left-to-right 0.8s;
     background: linear-gradient(93deg, #0499dd 0%, #17c1bc 100%);
 }
 
@@ -157,6 +180,15 @@ header section .text-div a i {
 
 header section .text-div a:hover i {
     transform: translateX(5px);
+}
+
+@keyframes left-to-right {
+    0% {
+        transform: translateX(-1000px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
 }
 
 header section .icons {
@@ -181,6 +213,27 @@ header section .icons i.fa-instagram:hover {
     color: rgba(253 36 76);
 }
 
+header section .icons a:nth-child(1) {
+    animation: right-to-left 0.5s;
+}
+
+header section .icons a:nth-child(2) {
+    animation: right-to-left 0.7s;
+}
+
+header section .icons a:nth-child(3) {
+    animation: right-to-left 0.8s;
+}
+
+@keyframes right-to-left {
+    0% {
+        transform: translateX(1000px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
 
 /* ---------------------------------------------------------------------------- */
 
@@ -192,9 +245,17 @@ header section .icons i.fa-instagram:hover {
     padding: 100px 100px;
 }
 
+#popular-parties .heading.show {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
 #popular-parties .heading {
     font-size: 24px;
     color: var(--blue);
+    opacity: 0;
+    transition: 0.4s;
+    transform: translateY(100px);
 }
 
 #popular-parties .cards-container {
@@ -204,6 +265,14 @@ header section .icons i.fa-instagram:hover {
     align-items: center;
     flex-wrap: wrap;
     margin-top: 50px;
+    opacity: 0;
+    transition: 0.4s;
+    transform: translateY(100px);
+}
+
+#popular-parties .cards-container.show {
+    opacity: 1;
+    transform: translateY(0px);
 }
 
 #popular-parties .cards-container .card {
@@ -291,6 +360,14 @@ header section .icons i.fa-instagram:hover {
 #package-offers .heading {
     font-size: 24px;
     color: var(--blue);
+    opacity: 0;
+    transform: translateY(100px);
+    transition: 0.4s;
+}
+
+#package-offers .heading.show {
+    opacity: 1;
+    transform: translateY(0px);
 }
 
 #package-offers .cards-container {
@@ -302,6 +379,11 @@ header section .icons i.fa-instagram:hover {
     margin-top: 50px;
 }
 
+#package-offers .cards-container .card.show {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
 #package-offers .cards-container .card {
     position: relative;
     width: 360px;
@@ -309,6 +391,9 @@ header section .icons i.fa-instagram:hover {
     border-radius: 10px;
     margin: 20px 10px;
     transition: 1s;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: 0.4s;
 }
 
 #package-offers .cards-container .card:hover {
@@ -387,6 +472,14 @@ header section .icons i.fa-instagram:hover {
     margin: 0 0 50px 100px;
     font-size: 24px;
     color: var(--blue);
+    opacity: 0;
+    transform: translateY(100px);
+    transition: 0.4s;
+}
+
+#gallery .heading.show {
+    transform: translateY(0px);
+    opacity: 1;
 }
 
 #gallery .image-container {
@@ -400,8 +493,15 @@ header section .icons i.fa-instagram:hover {
 }
 
 #gallery .image-container .image {
-    transition: 1s;
+    transition: 0.4s;
     opacity: 0.9;
+    transform: translateY(100px);
+    opacity: 0;
+}
+
+#gallery .image-container .image.show {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 #gallery .image-container .image:hover {
@@ -465,7 +565,7 @@ header section .icons i.fa-instagram:hover {
     position: relative;
     width: 100%;
     height: 600px;
-    background: url(../image/register-background.jpg) no-repeat center / cover;
+    background: url(../image/register-background.jpg) no-repeat center / cover fixed;
 }
 
 #register form {
